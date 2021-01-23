@@ -2650,7 +2650,7 @@
    *
    * Comment *_STALL_SENSITIVITY to disable sensorless homing for that axis.
    */
-  #define SENSORLESS_HOMING // StallGuard capable drivers only // edited: enabling for X+ and Y+
+  // #define SENSORLESS_HOMING // StallGuard capable drivers only // edited: TODO try to enable only for X+ and Y+
 
   #if EITHER(SENSORLESS_HOMING, SENSORLESS_PROBING)
     // TMC2209: 0...255. TMC2130: -64...63
