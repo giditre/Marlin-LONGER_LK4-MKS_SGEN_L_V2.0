@@ -1000,7 +1000,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -35, -5.5, -1.25 } // edited: related to dimensions of mounting piece for bltouch
+#define NOZZLE_TO_PROBE_OFFSET { -35, -5.5, -1.5 } // edited: related to dimensions of mounting piece for bltouch
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
 #define PROBING_MARGIN 15 // edited: LK4
@@ -1331,7 +1331,7 @@
  * these options to restore the prior leveling state or to always enable
  * leveling immediately after G28.
  */
-//#define RESTORE_LEVELING_AFTER_G28
+#define RESTORE_LEVELING_AFTER_G28
 //#define ENABLE_LEVELING_AFTER_G28
 
 /**
