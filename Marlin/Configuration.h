@@ -908,7 +908,7 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-//#define BLTOUCH
+#define BLTOUCH
 
 /**
  * Touch-MI Probe by hotends.fr
@@ -1103,7 +1103,7 @@
 //#define DELAY_BEFORE_PROBING 200  // (ms) To prevent vibrations from triggering piezo sensors
 
 // Require minimum nozzle and/or bed temperature for probing
-#define PREHEAT_BEFORE_PROBING // edited
+// #define PREHEAT_BEFORE_PROBING // edited
 #if ENABLED(PREHEAT_BEFORE_PROBING)
   #define PROBING_NOZZLE_TEMP 180   // (°C) Only applies to E0 at this time
   #define PROBING_BED_TEMP     60
@@ -1322,7 +1322,7 @@
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-//#define AUTO_BED_LEVELING_BILINEAR
+#define AUTO_BED_LEVELING_BILINEAR
 //#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 
@@ -1337,9 +1337,9 @@
 /**
  * Auto-leveling needs preheating
  */
-//#define PREHEAT_BEFORE_LEVELING // edited: TODO consider
+#define PREHEAT_BEFORE_LEVELING // edited: enabled for BLTouch
 #if ENABLED(PREHEAT_BEFORE_LEVELING)
-  #define LEVELING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
+  #define LEVELING_NOZZLE_TEMP 190   // (°C) Only applies to E0 at this time
   #define LEVELING_BED_TEMP     50
 #endif
 
@@ -1443,7 +1443,7 @@
  * Add a bed leveling sub-menu for ABL or MBL.
  * Include a guided procedure if manual probing is enabled.
  */
-// #define LCD_BED_LEVELING // edited: TODO consider with bltouch
+#define LCD_BED_LEVELING // edited: enabled with bltouch
 
 #if ENABLED(LCD_BED_LEVELING)
   #define MESH_EDIT_Z_STEP  0.025 // (mm) Step size while manually probing Z axis.
@@ -1455,15 +1455,15 @@
 #define LEVEL_BED_CORNERS
 
 #if ENABLED(LEVEL_BED_CORNERS)
-  #define LEVEL_CORNERS_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets
+  #define LEVEL_CORNERS_INSET_LFRB { 55, 55, 55, 55 } // (mm) Left, Front, Right, Back insets // changed for BLTouch support
   #define LEVEL_CORNERS_HEIGHT      0.0   // (mm) Z height of nozzle at leveling points
   #define LEVEL_CORNERS_Z_HOP       4.0   // (mm) Z height of nozzle between leveling points
   #define LEVEL_CENTER_TOO              // Move to the center after the last corner
-  //#define LEVEL_CORNERS_USE_PROBE // edited: TODO consider with bltouch
+  // #define LEVEL_CORNERS_USE_PROBE // edited: TODO consider with bltouch - causes error lcdprint.h:171: undefined reference to `lcd_put_wchar_max(unsigned long, unsigned short)'
   #if ENABLED(LEVEL_CORNERS_USE_PROBE)
     #define LEVEL_CORNERS_PROBE_TOLERANCE 0.1
     #define LEVEL_CORNERS_VERIFY_RAISED   // After adjustment triggers the probe, re-probe to verify
-    //#define LEVEL_CORNERS_AUDIO_FEEDBACK // edited: TODO consider with bltouch
+    // #define LEVEL_CORNERS_AUDIO_FEEDBACK
   #endif
 
   /**
@@ -2608,7 +2608,7 @@
  * Set this manually if there are extra servos needing manual control.
  * Set to 0 to turn off servo support.
  */
-//#define NUM_SERVOS 3 // Servo index starts with 0 for M280 command
+#define NUM_SERVOS 1 // Servo index starts with 0 for M280 command
 
 // (ms) Delay  before the next move will start, to give the servo time to reach its target angle.
 // 300ms is a good value but you can try less delay.
